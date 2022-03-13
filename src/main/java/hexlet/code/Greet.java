@@ -1,2 +1,15 @@
-package hexlet.code;public class Greet {
+package hexlet.code;
+
+public final class Greet implements Command {
+    @Override
+    public String toString() {
+        return "Greet";
+    }
+
+    @Override
+    public boolean run() {
+        System.out.println("Hi");
+
+        return true;
+    }
 }

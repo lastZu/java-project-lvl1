@@ -3,15 +3,17 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Cli {
-    public static void welcomeToTheBrainGames() {
+    public static String welcomeToTheBrainGames() {
         System.out.println("Welcome to the Brain Games!");
-        askNameAndSayHelloTo();
+        return askNameAndSayHelloTo();
     }
 
-    private static void askNameAndSayHelloTo() {
+    private static String askNameAndSayHelloTo() {
         System.out.print("May I have your name? ");
         Scanner scan = new Scanner(System.in);
         var name = scan.nextLine().trim();
         System.out.println("Hello, " + name + "!");
+
+        return name;
     }
 }
