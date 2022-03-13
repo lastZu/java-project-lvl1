@@ -1,12 +1,11 @@
 package hexlet.code;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
-    private static final int NUMBER_OF_COMMANDS_DISPLAYED = 3;
-
     public static void main(String[] args) {
-        Command[] commands = getCommands();
+        ArrayList<Command> commands = getCommands();
 
         boolean nextCommand = true;
         while (nextCommand) {
@@ -17,12 +16,13 @@ public class App {
         System.exit(0);
     }
 
-    private static Command[] getCommands() {
-        Command[] commands = new Command[NUMBER_OF_COMMANDS_DISPLAYED];
+    private static ArrayList<Command> getCommands() {
+        ArrayList<Command> commands = new ArrayList<Command>();
 
-        commands[0] = new Exit();
-        commands[1] = new Greet();
-        commands[2] = new Even();
+        commands.add(new Exit());
+        commands.add(new Greet());
+        commands.add(new Even());
+        commands.add(new Calc());
 
         return commands;
     }
@@ -31,12 +31,12 @@ public class App {
         System.out.println(index + " - " + command.toString());
     }
 
-    private static Command askNextCommand(Command[] commands) {
-        int length = commands.length;
+    private static Command askNextCommand(ArrayList<Command> commands) {
+        int length = commands.size();
         for (int i = 1; i < length; i++) {
-            printCommandToMenu(commands[i], i);
+            printCommandToMenu(commands.get(i), i);
         }
-        printCommandToMenu(commands[0], 0);
+        printCommandToMenu(commands.get(0), 0);
 
         Scanner scan = new Scanner(System.in);
         int commandNumber = -1;
@@ -50,6 +50,6 @@ public class App {
             scan.next();
         }
 
-        return commands[commandNumber];
+        return commands.get(commandNumber);
     }
 }
