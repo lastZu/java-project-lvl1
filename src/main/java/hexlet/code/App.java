@@ -9,6 +9,7 @@ public class App {
 
         boolean nextCommand = true;
         while (nextCommand) {
+            System.out.print("Your choice: ");
             Command command = askNextCommand(commands);
             nextCommand = command.run();
         }
@@ -23,6 +24,7 @@ public class App {
         commands.add(new Greet());
         commands.add(new Even());
         commands.add(new Calc());
+        commands.add(new GCD());
 
         return commands;
     }

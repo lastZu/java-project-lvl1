@@ -17,7 +17,7 @@ public final class Even extends Engine {
     protected String askNextQuestion() {
         int randomNumber = (int) (Math.random() * MAX_QUESTION_VALUE);
 
-        System.out.println("Question: " + randomNumber);
+        currentQuestion(Integer.toString(randomNumber));
 
         return randomNumber % 2 == 0 ? "yes" : "no";
     }

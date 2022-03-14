@@ -35,8 +35,4 @@ public final class Calc extends Engine {
         currentQuestion(x + " * " + y);
         return Integer.toString(x * y);
     }
-
-    private void currentQuestion(String questionsText) {
-        System.out.println("Question: " + questionsText);
-    }
 }

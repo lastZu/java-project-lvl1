@@ -65,4 +65,8 @@ abstract class Engine implements Command {
     private void sayResult() {
         System.out.println("Congratulations, " + getUserName() + "!");
     }
+
+    protected void currentQuestion(String questionsText) {
+        System.out.println("Question: " + questionsText);
+    }
 }
