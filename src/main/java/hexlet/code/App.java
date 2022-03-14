@@ -9,7 +9,6 @@ public class App {
 
         boolean nextCommand = true;
         while (nextCommand) {
-            System.out.print("Your choice: ");
             Command command = askNextCommand(commands);
             nextCommand = command.run();
         }
@@ -40,6 +39,7 @@ public class App {
         }
         printCommandToMenu(commands.get(0), 0);
 
+        System.out.print("Your choice: ");
         Scanner scan = new Scanner(System.in);
         int commandNumber = -1;
         while (scan.hasNext()) {
