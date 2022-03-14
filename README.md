@@ -8,3 +8,5 @@
 [![asciicast](https://asciinema.org/a/XYYZjJnN1FGhirvvwkBROnf2w.svg)](https://asciinema.org/a/XYYZjJnN1FGhirvvwkBROnf2w)
 # asciinema - play GCD
 [![asciicast](https://asciinema.org/a/tKejeyK07IUmix3a8vbBmMOxR.svg)](https://asciinema.org/a/tKejeyK07IUmix3a8vbBmMOxR)
+# asciinema - play Progresion
+[![asciicast](https://asciinema.org/a/qGNIltIj9YCxrD8ZW461zAz74.svg)](https://asciinema.org/a/qGNIltIj9YCxrD8ZW461zAz74)

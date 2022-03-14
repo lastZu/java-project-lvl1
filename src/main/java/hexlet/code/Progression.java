@@ -19,7 +19,7 @@ public final class Progression extends Engine {
     protected String askNextQuestion() {
         int step = (int) (Math.random() * MAX_STEP_VALUE);
         int startValue = (int) (Math.random() * MAX_STEP_VALUE);
-        int hiddenNumberIndex = (int) (Math.random() * ROW_LENGTH);
+        int hiddenNumberIndex = (int) (Math.random() * ROW_LENGTH) + 1;
 
         int answer = 0;
         StringBuilder question = new StringBuilder();
