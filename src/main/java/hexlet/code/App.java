@@ -17,13 +17,14 @@ public class App {
     }
 
     private static ArrayList<Command> getCommands() {
-        ArrayList<Command> commands = new ArrayList<Command>();
+        ArrayList<Command> commands = new ArrayList<>();
 
         commands.add(new Exit());
         commands.add(new Greet());
         commands.add(new Even());
         commands.add(new Calc());
         commands.add(new GCD());
+        commands.add(new Progression());
 
         return commands;
     }
