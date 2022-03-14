@@ -6,3 +6,5 @@
 [![asciicast](https://asciinema.org/a/dXiTvS2sYuKWRTK5R4RSSh6KK.svg)](https://asciinema.org/a/dXiTvS2sYuKWRTK5R4RSSh6KK)
 # asciinema - play Calc
 [![asciicast](https://asciinema.org/a/XYYZjJnN1FGhirvvwkBROnf2w.svg)](https://asciinema.org/a/XYYZjJnN1FGhirvvwkBROnf2w)
+# asciinema - play GCD
+[![asciicast](https://asciinema.org/a/tKejeyK07IUmix3a8vbBmMOxR.svg)](https://asciinema.org/a/tKejeyK07IUmix3a8vbBmMOxR)
