@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.comands.games;
 
 public final class Progression extends Engine {
     private static final int ROW_LENGTH = 8;

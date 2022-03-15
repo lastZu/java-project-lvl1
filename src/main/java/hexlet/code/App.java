@@ -1,5 +1,14 @@
 package hexlet.code;
 
+import hexlet.code.comands.Command;
+import hexlet.code.comands.Exit;
+import hexlet.code.comands.Greet;
+import hexlet.code.comands.games.Calc;
+import hexlet.code.comands.games.Even;
+import hexlet.code.comands.games.GCD;
+import hexlet.code.comands.games.Prime;
+import hexlet.code.comands.games.Progression;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 

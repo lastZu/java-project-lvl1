@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.comands;
 
 public final class Greet implements Command {
     @Override

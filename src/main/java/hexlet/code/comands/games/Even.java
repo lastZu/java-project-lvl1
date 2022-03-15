@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.comands.games;
 
 public final class Even extends Engine {
     private static final int MAX_QUESTION_VALUE = 10000;

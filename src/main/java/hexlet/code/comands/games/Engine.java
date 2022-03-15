@@ -1,4 +1,7 @@
-package hexlet.code;
+package hexlet.code.comands.games;
+
+import hexlet.code.Cli;
+import hexlet.code.comands.Command;
 
 import java.util.Locale;
 import java.util.Scanner;
