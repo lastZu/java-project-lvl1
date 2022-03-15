@@ -10,3 +10,6 @@
 [![asciicast](https://asciinema.org/a/tKejeyK07IUmix3a8vbBmMOxR.svg)](https://asciinema.org/a/tKejeyK07IUmix3a8vbBmMOxR)
 # asciinema - play Progresion
 [![asciicast](https://asciinema.org/a/qGNIltIj9YCxrD8ZW461zAz74.svg)](https://asciinema.org/a/qGNIltIj9YCxrD8ZW461zAz74)
+# asciinema - play Prime
+[![asciicast](https://asciinema.org/a/5RG90vGcDDiXzwsOyaG5mpLeh.svg)](https://asciinema.org/a/5RG90vGcDDiXzwsOyaG5mpLeh)
+
