@@ -25,6 +25,7 @@ public class App {
         commands.add(new Calc());
         commands.add(new GCD());
         commands.add(new Progression());
+        commands.add(new Prime());
 
         return commands;
     }
@@ -34,6 +35,8 @@ public class App {
     }
 
     private static Command askNextCommand(ArrayList<Command> commands) {
+        System.out.println("Please enter the game number and press Enter.");
+
         int length = commands.size();
         for (int i = 1; i < length; i++) {
             printCommandToMenu(commands.get(i), i);
