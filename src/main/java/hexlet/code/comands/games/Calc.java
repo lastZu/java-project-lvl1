@@ -1,17 +1,21 @@
 package hexlet.code.comands.games;
 
-public final class Calc {
+public final class Calc extends Engine {
     private static final int MAX_QUESTION_VALUE = 100;
     private static final int OPERATION_AMOUNT = 3;
 
-    public static void sayRules() {
+    @Override
+    public String toString() {
+        return "Calc";
+    }
+
+    @Override
+    protected void sayRules() {
         System.out.println("What is the result of the expression?");
     }
 
-    public static String askNextQuestion(int questionNumber) {
-        if (questionNumber == 0) {
-            sayRules();
-        }
+    @Override
+    protected String askNextQuestion() {
         int firstRandomNumber = (int) (Math.random() * MAX_QUESTION_VALUE);
         int secondRandomNumber = (int) (Math.random() * MAX_QUESTION_VALUE);
         int operationNumber = (int) (Math.random() * OPERATION_AMOUNT);
@@ -19,16 +23,16 @@ public final class Calc {
         return printQuestion(firstRandomNumber, secondRandomNumber, operationNumber);
     }
 
-    private static String printQuestion(int x, int y, int operationNumber) {
+    private String printQuestion(int x, int y, int operationNumber) {
         if (operationNumber == 0) {
-            Engine.currentQuestion(x + " + " + y);
+            currentQuestion(x + " + " + y);
             return Integer.toString(x + y);
         }
         if (operationNumber == 1) {
-            Engine.currentQuestion(x + " - " + y);
+            currentQuestion(x + " - " + y);
             return Integer.toString(x - y);
         }
-        Engine.currentQuestion(x + " * " + y);
+        currentQuestion(x + " * " + y);
         return Integer.toString(x * y);
     }
 }

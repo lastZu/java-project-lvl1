@@ -1,19 +1,23 @@
 package hexlet.code.comands.games;
 
-public final class Even {
+public final class Even extends Engine {
     private static final int MAX_QUESTION_VALUE = 10000;
 
-    public static void sayRules() {
+    @Override
+    public String toString() {
+        return "Even";
+    }
+
+    @Override
+    protected void sayRules() {
         System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
     }
 
-    public static String askNextQuestion(int questionNumber) {
-        if (questionNumber == 0) {
-            sayRules();
-        }
+    @Override
+    protected String askNextQuestion() {
         int randomNumber = (int) (Math.random() * MAX_QUESTION_VALUE);
 
-        Engine.currentQuestion(Integer.toString(randomNumber));
+        currentQuestion(Integer.toString(randomNumber));
 
         return randomNumber % 2 == 0 ? "yes" : "no";
     }

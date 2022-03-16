@@ -1,50 +1,49 @@
 package hexlet.code;
 
+import hexlet.code.comands.Command;
 import hexlet.code.comands.Exit;
-import hexlet.code.comands.games.Engine;
+import hexlet.code.comands.Greet;
+import hexlet.code.comands.games.Calc;
+import hexlet.code.comands.games.Even;
+import hexlet.code.comands.games.GCD;
+import hexlet.code.comands.games.Prime;
+import hexlet.code.comands.games.Progression;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        ArrayList<String> commands = getCommands();
+        ArrayList<Command> commands = getCommands();
 
-        boolean haveNextCommand = true;
-        while (haveNextCommand) {
-            String command = askNextCommand(commands);
-            haveNextCommand = runCommand(command);
+        boolean nextCommand = true;
+        while (nextCommand) {
+            Command command = askNextCommand(commands);
+            nextCommand = command.run();
         }
 
         System.exit(0);
     }
 
-    private static boolean runCommand(String command) {
-        if (command.equals("Exit")) {
-            return Exit.run();
-        }
-        return Engine.run(command);
-    }
+    private static ArrayList<Command> getCommands() {
+        ArrayList<Command> commands = new ArrayList<>();
 
-    private static ArrayList<String> getCommands() {
-        ArrayList<String> commands = new ArrayList<>();
-
-        commands.add("Exit");
-        commands.add("Greet");
-        commands.add("Even");
-        commands.add("Calc");
-        commands.add("GCD");
-        commands.add("Progression");
-        commands.add("Prime");
+        commands.add(new Exit());
+        commands.add(new Greet());
+        commands.add(new Even());
+        commands.add(new Calc());
+        commands.add(new GCD());
+        commands.add(new Progression());
+        commands.add(new Prime());
 
         return commands;
     }
 
-    private static void printCommandToMenu(String command, int index) {
-        System.out.println(index + " - " + command);
+    private static void printCommandToMenu(Command command, int index) {
+        System.out.println(index + " - " + command.toString());
     }
 
-    private static String askNextCommand(ArrayList<String> commands) {
+    private static Command askNextCommand(ArrayList<Command> commands) {
         System.out.println("Please enter the game number and press Enter.");
 
         int length = commands.size();

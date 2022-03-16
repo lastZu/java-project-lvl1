@@ -1,18 +1,22 @@
 package hexlet.code.comands.games;
 
-public final class Progression {
+public final class Progression extends Engine {
     private static final int ROW_LENGTH = 8;
     private static final int MAX_STEP_VALUE = 20;
     private static final String SEPARATOR = " ";
 
-    public static void sayRules() {
+    @Override
+    public String toString() {
+        return "Progression";
+    }
+
+    @Override
+    protected void sayRules() {
         System.out.println("What number is missing in the progression?");
     }
 
-    public static String askNextQuestion(int questionNumber) {
-        if (questionNumber == 0) {
-            sayRules();
-        }
+    @Override
+    protected String askNextQuestion() {
         int step = (int) (Math.random() * MAX_STEP_VALUE);
         int startValue = (int) (Math.random() * MAX_STEP_VALUE);
         int hiddenNumberIndex = (int) (Math.random() * ROW_LENGTH) + 1;
@@ -31,7 +35,7 @@ public final class Progression {
                 question.append(SEPARATOR);
             }
         }
-        Engine.currentQuestion(question.toString());
+        currentQuestion(question.toString());
 
         return Integer.toString(answer);
     }
