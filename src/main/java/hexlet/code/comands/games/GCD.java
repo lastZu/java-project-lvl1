@@ -11,8 +11,8 @@ public final class GCD {
         if (questionNumber == 0) {
             sayRules();
         }
-        int firstRandomNumber = (int) (Math.random() * MAX_QUESTION_VALUE);
-        int secondRandomNumber = (int) (Math.random() * MAX_QUESTION_VALUE);
+        int firstRandomNumber = (int) (Math.random() * MAX_QUESTION_VALUE) + 1;
+        int secondRandomNumber = (int) (Math.random() * MAX_QUESTION_VALUE) + 1;
 
         Engine.currentQuestion(firstRandomNumber + " " + secondRandomNumber);
         return Integer.toString(getAnswer(firstRandomNumber, secondRandomNumber));
