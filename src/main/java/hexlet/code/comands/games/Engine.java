@@ -1,75 +1,72 @@
 package hexlet.code.comands.games;
 
 import hexlet.code.Cli;
-import hexlet.code.comands.Command;
-
 import java.util.Locale;
 import java.util.Scanner;
 
-abstract class Engine implements Command {
+public final class Engine {
     private static final int QUESTION_AMOUNT = 3;
-    private String userName;
 
-    public String getUserName() {
-        return userName;
-    }
+    public static boolean run(String game) {
 
-    public void setUserName(final String name) {
-        this.userName = name;
-    }
+        String userName = Cli.welcomeToTheBrainGames();
 
-    @Override
-    public boolean run() {
-        setUserName(Cli.welcomeToTheBrainGames());
-
-        sayRules();
-
-        runPlay();
+        runPlay(userName, game);
 
         return true;
     }
 
-    protected abstract void sayRules();
+    private static String askNextQuestion(String game, int questionNumber) {
+        return switch (game) {
+            case "Calc" -> Calc.askNextQuestion(questionNumber);
+            case "Even" -> Even.askNextQuestion(questionNumber);
+            case "GCD" -> GCD.askNextQuestion(questionNumber);
+            case "Prime" -> Prime.askNextQuestion(questionNumber);
+            case "Progression" -> Progression.askNextQuestion(questionNumber);
+            default -> "";
+        };
+    }
 
-    private void runPlay() {
+    private static void runPlay(String userName, String game) {
         for (int i = 0; i < QUESTION_AMOUNT; i++) {
-            String correctAnswer = askNextQuestion();
+            String correctAnswer = askNextQuestion(game, i);
+            if (correctAnswer.isEmpty()) {
+                return;
+            }
             String userAnswer = getUserAnswer();
 
             boolean isCorrectAnswer = userAnswer.toLowerCase(Locale.ROOT).equals(correctAnswer);
 
             if (!isCorrectAnswer) {
-                sayWrong(userAnswer, correctAnswer);
+                sayWrong(userName, userAnswer, correctAnswer);
                 return;
             }
             sayCorrect();
         }
-        sayResult();
+        sayResult(userName);
     }
 
-    protected abstract String askNextQuestion();
-
-    private String getUserAnswer() {
+    private static String getUserAnswer() {
         System.out.print("Your answer: ");
         Scanner scan = new Scanner(System.in);
 
         return scan.nextLine().trim();
     }
 
-    private void sayCorrect() {
+    private static void sayCorrect() {
         System.out.println("Correct!");
     }
 
-    private void sayWrong(String userAnswer, String correctAnswer) {
+    private static void sayWrong(String userName, String userAnswer, String correctAnswer) {
         System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
-        System.out.println("Let's try again, " + getUserName() + "!");
+        System.out.println("Let's try again, " + userName + "!");
     }
 
-    private void sayResult() {
-        System.out.println("Congratulations, " + getUserName() + "!");
+    private static void sayResult(String userName) {
+        System.out.println("Congratulations, " + userName + "!");
     }
 
-    protected void currentQuestion(String questionsText) {
+    public static void currentQuestion(String questionsText) {
         System.out.println("Question: " + questionsText);
     }
 }

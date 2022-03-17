@@ -1,23 +1,19 @@
 package hexlet.code.comands.games;
 
-public final class Prime extends Engine {
+public final class Prime {
     private static final int MAX_QUESTION_VALUE = 1000;
 
-    @Override
-    public String toString() {
-        return "Prime";
-    }
-
-    @Override
-    protected void sayRules() {
+    public static void sayRules() {
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
     }
 
-    @Override
-    protected String askNextQuestion() {
+    public static String askNextQuestion(int questionNumber) {
+        if (questionNumber == 0) {
+            sayRules();
+        }
         int randomNumber = (int) (Math.random() * MAX_QUESTION_VALUE) + 1;
 
-        currentQuestion(Integer.toString(randomNumber));
+        Engine.currentQuestion(Integer.toString(randomNumber));
         if (randomNumber == 1) {
             return "no";
         }

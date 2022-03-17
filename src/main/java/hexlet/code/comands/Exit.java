@@ -1,15 +1,7 @@
 package hexlet.code.comands;
 
-public final class Exit implements Command {
-    @Override
-    public String toString() {
-        return "Exit";
-    }
-
-    @Override
-    public boolean run() {
-        System.out.println("Exit");
-
+public final class Exit {
+    public static boolean run() {
         return false;
     }
 }
