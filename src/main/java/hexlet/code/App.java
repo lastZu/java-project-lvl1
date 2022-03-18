@@ -10,20 +10,13 @@ public class App {
     public static void main(String[] args) {
         ArrayList<String> commands = getCommands();
 
-        boolean haveNextCommand = true;
-        while (haveNextCommand) {
+        boolean pickNextCommand = true;
+        while (pickNextCommand) {
             String command = askNextCommand(commands);
-            haveNextCommand = runCommand(command);
+            pickNextCommand = runCommand(command);
         }
 
         System.exit(0);
-    }
-
-    private static boolean runCommand(String command) {
-        if (command.equals("Exit")) {
-            return Exit.run();
-        }
-        return Engine.run(command);
     }
 
     private static ArrayList<String> getCommands() {
@@ -38,10 +31,6 @@ public class App {
         commands.add("Prime");
 
         return commands;
-    }
-
-    private static void printCommandToMenu(String command, int index) {
-        System.out.println(index + " - " + command);
     }
 
     private static String askNextCommand(ArrayList<String> commands) {
@@ -67,5 +56,16 @@ public class App {
         }
 
         return commands.get(commandNumber);
+    }
+
+    private static void printCommandToMenu(String command, int index) {
+        System.out.println(index + " - " + command);
+    }
+
+    private static boolean runCommand(String command) {
+        if (command.equals("Exit")) {
+            return Exit.run();
+        }
+        return Engine.run(command);
     }
 }

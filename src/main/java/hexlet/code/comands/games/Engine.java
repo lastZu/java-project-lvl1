@@ -8,23 +8,11 @@ public final class Engine {
     private static final int QUESTION_AMOUNT = 3;
 
     public static boolean run(String game) {
-
         String userName = Cli.welcomeToTheBrainGames();
 
         runPlay(userName, game);
 
         return true;
-    }
-
-    private static String askNextQuestion(String game, int questionNumber) {
-        return switch (game) {
-            case "Calc" -> Calc.askNextQuestion(questionNumber);
-            case "Even" -> Even.askNextQuestion(questionNumber);
-            case "GCD" -> GCD.askNextQuestion(questionNumber);
-            case "Prime" -> Prime.askNextQuestion(questionNumber);
-            case "Progression" -> Progression.askNextQuestion(questionNumber);
-            default -> "";
-        };
     }
 
     private static void runPlay(String userName, String game) {
@@ -44,6 +32,18 @@ public final class Engine {
             sayCorrect();
         }
         sayResult(userName);
+    }
+
+    private static String askNextQuestion(String game, int questionNumber) {
+        return switch (game) {
+            case "Calc" -> Calc.askNextQuestion(questionNumber);
+            case "Even" -> Even.askNextQuestion(questionNumber);
+            case "GCD" -> GCD.askNextQuestion(questionNumber);
+            case "Prime" -> Prime.askNextQuestion(questionNumber);
+            case "Progression" -> Progression.askNextQuestion(questionNumber);
+            case "Greet" -> "";
+            default -> "";
+        };
     }
 
     private static String getUserAnswer() {
