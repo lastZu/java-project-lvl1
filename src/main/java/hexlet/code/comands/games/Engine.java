@@ -12,7 +12,7 @@ public final class Engine {
 
         runPlay(userName, game);
 
-        return true;
+        return false;
     }
 
     private static void runPlay(String userName, String game) {
