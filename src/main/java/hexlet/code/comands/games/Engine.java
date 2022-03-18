@@ -1,6 +1,8 @@
 package hexlet.code.comands.games;
 
 import hexlet.code.Cli;
+import hexlet.code.comands.Greet;
+
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -41,7 +43,7 @@ public final class Engine {
             case "GCD" -> GCD.askNextQuestion(questionNumber);
             case "Prime" -> Prime.askNextQuestion(questionNumber);
             case "Progression" -> Progression.askNextQuestion(questionNumber);
-            case "Greet" -> "";
+            case "Greet" -> Greet.askNextQuestion();
             default -> "";
         };
     }
