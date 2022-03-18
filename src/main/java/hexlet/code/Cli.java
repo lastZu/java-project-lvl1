@@ -13,6 +13,7 @@ public class Cli {
         System.out.print("May I have your name? ");
         Scanner scan = new Scanner(System.in);
         var name = scan.nextLine().trim();
+        System.out.println();
         System.out.println("Hello, " + name + "!");
 
         return name;
