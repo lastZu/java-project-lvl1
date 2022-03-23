@@ -1,19 +1,36 @@
 package hexlet.code.games;
 
+import hexlet.code.Data;
+import hexlet.code.Engine;
+import hexlet.code.Utils;
+
 public final class Prime {
     private static final int MAX_QUESTION_VALUE = 1000;
 
-    public static void sayRules() {
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+    public static void run() {
+        String description = getDescription();
+
+        boolean continueGame = true;
+        while (continueGame) {
+            Data roundData = getNextRound();
+            continueGame = Engine.run(roundData, description);
+        }
     }
 
-    public static String askNextQuestion(int questionNumber) {
-        if (questionNumber == 0) {
-            sayRules();
-        }
-        int randomNumber = (int) (Math.random() * MAX_QUESTION_VALUE) + 1;
+    private static String getDescription() {
+        return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    }
 
-        Engine.currentQuestion(Integer.toString(randomNumber));
+    private static Data getNextRound() {
+        int randomNumber = Utils.getRandomInteger(1, MAX_QUESTION_VALUE);
+
+        String question = Integer.toString(randomNumber);
+        String answer = getAnswer(randomNumber);
+
+        return new Data(question, answer);
+    }
+
+    public static String getAnswer(int randomNumber) {
         if (randomNumber == 1) {
             return "no";
         }

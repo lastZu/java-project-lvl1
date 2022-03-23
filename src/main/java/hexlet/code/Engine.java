@@ -1,21 +1,14 @@
 package hexlet.code;
 
-import hexlet.code.Cli;
-
 import java.util.Locale;
 import java.util.Scanner;
 
 public final class Engine {
     private static final int ROUND_AMOUNT = 3;
-    private static int currentRound = 0;
+    private static int currentRound;
     private static String userName;
 
-    public static String[] initializeData() {
-        
-    }
-
-    public static boolean run(String[] roundData, String description) {
-        int currentRound = getCurrentRound();
+    public static boolean run(Data roundData, String description) {
         if (currentRound == ROUND_AMOUNT) {
             sayResult();
             setCurrentRound(0);
@@ -23,19 +16,17 @@ public final class Engine {
             return false;
         }
         if (currentRound == 0) {
-            setUserName(Cli.greet());
+            setUserName(Cli.greet());//------
             System.out.println(description);
         }
         setCurrentRound(currentRound + 1);
 
-        runRound(roundData);
-
-        return true;
+        return runRound(roundData);
     }
 
-    private static void runRound(String[] roundData) {
-        String question = roundData[0];
-        String correctAnswer = roundData[1];
+    private static boolean runRound(Data roundData) {
+        String question = roundData.getQuestion();
+        String correctAnswer = roundData.getAnswer();
 
         System.out.println(question);
 
@@ -45,9 +36,10 @@ public final class Engine {
 
         if (!isCorrectAnswer) {
             sayWrong(userAnswer, correctAnswer);
-            return;
+            return false;
         }
         sayCorrect();
+        return true;
     }
 
     private static String getUserAnswer() {
@@ -70,7 +62,7 @@ public final class Engine {
         return userName;
     }
 
-    private static void sayResult(String userName) {
+    private static void sayResult() {
         System.out.println("Congratulations, " + userName + "!");
     }
 
@@ -78,15 +70,11 @@ public final class Engine {
         System.out.println("Question: " + questionsText);
     }
 
-    public static int getCurrentRound() {
-        return currentRound;
+    private static void setCurrentRound(int roundNumber) {
+        Engine.currentRound = roundNumber;
     }
 
-    public static void setCurrentRound(int currentRound) {
-        Engine.currentRound = currentRound;
-    }
-
-    public static void setUserName(String userName) {
-        Engine.userName = userName;
+    private static void setUserName(String name) {
+        Engine.userName = name;
     }
 }

@@ -1,6 +1,8 @@
 package hexlet.code.games;
 
+import hexlet.code.Data;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public final class Calc {
     private static final int MAX_QUESTION_VALUE = 100;
@@ -11,7 +13,7 @@ public final class Calc {
 
         boolean continueGame = true;
         while (continueGame) {
-            String[] roundData = getNextQuestion();
+            Data roundData = getNextRound();
             continueGame = Engine.run(roundData, description);
         }
     }
@@ -20,37 +22,29 @@ public final class Calc {
         return "What is the result of the expression?";
     }
 
-    public static String[] getNextQuestion() {
-        int firstRandomNumber = (int) (Math.random() * MAX_QUESTION_VALUE);
-        int secondRandomNumber = (int) (Math.random() * MAX_QUESTION_VALUE);
-        int operationNumber = (int) (Math.random() * OPERATION_AMOUNT);
+    private static Data getNextRound() {
+        int firstRandomNumber = Utils.getRandomInteger(0, MAX_QUESTION_VALUE);
+        int secondRandomNumber = Utils.getRandomInteger(0, MAX_QUESTION_VALUE);
+        int operationNumber = Utils.getRandomInteger(0, OPERATION_AMOUNT);
 
-        String[] roundData = printQuestion(firstRandomNumber, secondRandomNumber, operationNumber);
-
-        return roundData;
+        return generateNextRound(firstRandomNumber, secondRandomNumber, operationNumber);
     }
 
-    public static String askNextQuestion(int questionNumber) {
-        if (questionNumber == 0) {
-            sayRules();
-        }
-        int firstRandomNumber = (int) (Math.random() * MAX_QUESTION_VALUE);
-        int secondRandomNumber = (int) (Math.random() * MAX_QUESTION_VALUE);
-        int operationNumber = (int) (Math.random() * OPERATION_AMOUNT);
-
-        return printQuestion(firstRandomNumber, secondRandomNumber, operationNumber);
-    }
-
-    private static String[] printQuestion(int x, int y, int operationNumber) {
-        String[] roundData = new String[2];
+    private static Data generateNextRound(int x, int y, int operationNumber) {
+        String question = null;//-----
+        int answer = 0;
 
         if (operationNumber == 0) {
-            roundData[0] = x + y;
-            roundData[1] = Integer.toString(x + y);
+            answer = x + y;
+            question = x + " + " + y;
         } else if (operationNumber == 1) {
-            return Integer.toString(x - y);
-        } else if (operationNumber == 1) {
-            return Integer.toString(x * y);
+            answer = x - y;
+            question = x + " - " + y;
+        } else if (operationNumber == 2) {
+            answer = x * y;
+            question = x + " * " + y;
         }
+
+        return new Data(question, Integer.toString(answer));
     }
 }

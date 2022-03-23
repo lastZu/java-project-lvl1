@@ -1,6 +1,8 @@
 package hexlet.code.games;
 
+import hexlet.code.Data;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public final class Even {
     private static final int MAX_QUESTION_VALUE = 10000;
@@ -10,7 +12,7 @@ public final class Even {
 
         boolean continueGame = true;
         while (continueGame) {
-            String[] roundData = getNextQuestion();
+            Data roundData = getNextRound();
             continueGame = Engine.run(roundData, description);
         }
     }
@@ -19,12 +21,12 @@ public final class Even {
         return "Answer 'yes' if number even otherwise answer 'no'.";
     }
 
-    public static String[] getNextQuestion() {
-        int randomNumber = (int) (Math.random() * MAX_QUESTION_VALUE);
+    private static Data getNextRound() {
+        int randomNumber = Utils.getRandomInteger(0, MAX_QUESTION_VALUE);
 
-        String[] roundData = new String[2];
-        roundData[0] = Integer.toString(randomNumber);
-        roundData[1] = randomNumber % 2 == 0 ? "yes" : "no";
-        return roundData;
+        String question = Integer.toString(randomNumber);
+        String answer = randomNumber % 2 == 0 ? "yes" : "no";
+
+        return new Data(question, answer);
     }
 }
