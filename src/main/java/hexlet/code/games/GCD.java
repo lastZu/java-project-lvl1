@@ -1,4 +1,4 @@
-package hexlet.code.comands.games;
+package hexlet.code.games;
 
 public final class GCD {
     private static final int MAX_QUESTION_VALUE = 1000;

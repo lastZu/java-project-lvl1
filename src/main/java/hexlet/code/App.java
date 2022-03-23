@@ -1,47 +1,35 @@
 package hexlet.code;
 
-import hexlet.code.comands.Exit;
-import hexlet.code.comands.games.Engine;
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        ArrayList<String> commands = getCommands();
-
-        boolean pickNextCommand = true;
-        while (pickNextCommand) {
-            String command = askNextCommand(commands);
-            pickNextCommand = runCommand(command);
-        }
+        System.out.println("Please enter the game number and press Enter.");
+        printCommands();
+        int maxCommandNumber = 6;
+        int numberPickedCommand = askNextCommand(maxCommandNumber);
+        runCommand(numberPickedCommand);
 
         System.exit(0);
     }
 
-    private static ArrayList<String> getCommands() {
-        ArrayList<String> commands = new ArrayList<>();
-
-        commands.add("Exit");
-        commands.add("Greet");
-        commands.add("Even");
-        commands.add("Calc");
-        commands.add("GCD");
-        commands.add("Progression");
-        commands.add("Prime");
-
-        return commands;
+    private static void printCommands() {
+        printCommandToMenu("Exit", 0);
+        printCommandToMenu("Greet", 1);
+        printCommandToMenu("Even", 2);
+        printCommandToMenu("Calc", 3);
+        printCommandToMenu("GCD", 4);
+        printCommandToMenu("Progression", 5);
+        printCommandToMenu("Prime", 6);
     }
 
-    private static String askNextCommand(ArrayList<String> commands) {
-        System.out.println("Please enter the game number and press Enter.");
-
-        int length = commands.size();
-        for (int i = 1; i < length; i++) {
-            printCommandToMenu(commands.get(i), i);
-        }
-        printCommandToMenu(commands.get(0), 0);
-
+    private static int askNextCommand(int maxCommandNumber) {
         System.out.print("Your choice: ");
         Scanner scan = new Scanner(System.in);
         int commandNumber = -1;
@@ -49,23 +37,28 @@ public class App {
             if (scan.hasNextInt()) {
                 commandNumber = scan.nextInt();
             }
-            if (commandNumber >= 0 && commandNumber < length) {
+            if (commandNumber >= 0 && commandNumber < maxCommandNumber + 1) {
                 break;
             }
             scan.next();
         }
 
-        return commands.get(commandNumber);
+        return commandNumber;
     }
 
     private static void printCommandToMenu(String command, int index) {
         System.out.println(index + " - " + command);
     }
 
-    private static boolean runCommand(String command) {
-        if (command.equals("Exit")) {
-            return Exit.run();
+    private static void runCommand(int commandNumber) {
+        switch (commandNumber) {
+            case 1 -> Cli.greet();
+            case 2 -> Even.run();
+            case 3 -> Calc.run();
+            case 2 -> GCD.run();
+            case 2 -> Progression.run();
+            case 2 -> Prime.run();
+            default -> {}
         }
-        return Engine.run(command);
     }
 }

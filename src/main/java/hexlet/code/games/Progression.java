@@ -1,4 +1,4 @@
-package hexlet.code.comands.games;
+package hexlet.code.games;
 
 public final class Progression {
     private static final int ROW_LENGTH = 8;
