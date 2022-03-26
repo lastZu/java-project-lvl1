@@ -16,7 +16,7 @@ public final class Engine {
             return false;
         }
         if (currentRound == 0) {
-            setUserName(Cli.greet());//------
+            setUserName(Cli.greet());
             System.out.println(description);
         }
         setCurrentRound(currentRound + 1);

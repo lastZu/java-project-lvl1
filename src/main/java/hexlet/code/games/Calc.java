@@ -31,7 +31,7 @@ public final class Calc {
     }
 
     private static Data generateNextRound(int x, int y, int operationNumber) {
-        String question = null;//-----
+        String question = "0 + 0";
         int answer = 0;
 
         if (operationNumber == 0) {

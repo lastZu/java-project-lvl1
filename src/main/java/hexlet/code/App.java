@@ -9,11 +9,12 @@ import hexlet.code.games.Progression;
 import java.util.Scanner;
 
 public class App {
+    private static final int MAX_COMMAND_NUMBER = 6;
+
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
         printCommands();
-        int maxCommandNumber = 6;
-        String numberPickedCommand = askNextCommand(maxCommandNumber);
+        String numberPickedCommand = askNextCommand(MAX_COMMAND_NUMBER);
         runCommand(numberPickedCommand);
 
         System.exit(0);
@@ -52,7 +53,7 @@ public class App {
 
     private static void runCommand(String commandNumber) {
         switch (commandNumber) {
-            case "1" -> Cli.greet();//---
+            case "1" -> Cli.greet();
             case "2" -> Even.run();
             case "3" -> Calc.run();
             case "4" -> GCD.run();
