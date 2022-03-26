@@ -4,6 +4,8 @@ import hexlet.code.Data;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+import java.util.StringJoiner;
+
 public final class Progression {
     private static final int ROW_LENGTH = 8;
     private static final int MAX_STEP_VALUE = 20;
@@ -33,17 +35,14 @@ public final class Progression {
 
     private static Data generateNextRound(int startValue, int step, int hiddenNumberIndex) {
         int answer = 0;
-        StringBuilder question = new StringBuilder();
+        StringJoiner question = new StringJoiner(SEPARATOR);
         for (int i = 1; i <= ROW_LENGTH; i++) {
             int tempNumber = startValue + i * step;
             if (i == hiddenNumberIndex) {
-                question.append("..");
+                question.add("..");
                 answer = tempNumber;
             } else {
-                question.append(tempNumber);
-            }
-            if (i != ROW_LENGTH) {
-                question.append(SEPARATOR);
+                question.add(Integer.toString(tempNumber));
             }
         }
 
