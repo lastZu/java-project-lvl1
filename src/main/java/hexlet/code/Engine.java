@@ -28,7 +28,7 @@ public final class Engine {
         String question = roundData.getQuestion();
         String correctAnswer = roundData.getAnswer();
 
-        System.out.println(question);
+        askCurrentQuestion(question);
 
         String userAnswer = getUserAnswer();
 
@@ -66,7 +66,7 @@ public final class Engine {
         System.out.println("Congratulations, " + userName + "!");
     }
 
-    public static void currentQuestion(String questionsText) {
+    public static void askCurrentQuestion(String questionsText) {
         System.out.println("Question: " + questionsText);
     }
 
