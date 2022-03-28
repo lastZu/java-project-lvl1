@@ -25,8 +25,8 @@ public final class Engine {
         String userName = greet();
         System.out.println(description);
 
-        boolean isCorrectAnswer = false;
         Scanner scan = new Scanner(System.in);
+        boolean isCorrectAnswer = false;
         for (int i = 0; i < ROUND_AMOUNT; i++) {
             String question = roundData[i].getQuestion();
             String correctAnswer = roundData[i].getAnswer();
@@ -43,13 +43,12 @@ public final class Engine {
             if (!isCorrectAnswer) {
                 System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", userAnswer, correctAnswer);
                 System.out.println("Let's try again, " + userName + "!");
-                break;
+                return;
             }
 
             System.out.println("Correct!");
         }
-        if (isCorrectAnswer) {
-            System.out.println("Congratulations, " + userName + "!");
-        }
+
+        System.out.println("Congratulations, " + userName + "!");
     }
 }

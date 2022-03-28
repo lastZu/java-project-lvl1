@@ -34,11 +34,9 @@ public final class Progression {
             StringJoiner question = new StringJoiner(SEPARATOR);
             for (int j = 1; j <= ROW_LENGTH; j++) {
                 int tempNumber = startValue + j * step;
-                String addingValue = Integer.toString(tempNumber);
-                if (j == hiddenNumberIndex) {
-                    addingValue = "..";
-                    answer = tempNumber;
-                }
+                String addingValue = j == hiddenNumberIndex ? ".." : Integer.toString(tempNumber);
+                answer = j == hiddenNumberIndex ? tempNumber : answer;
+
                 question.add(addingValue);
             }
             roundsData[i] = new RoundData(question.toString(), Integer.toString(answer));
