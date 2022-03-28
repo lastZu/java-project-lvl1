@@ -13,14 +13,7 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
-        printCommands();
-        String numberPickedCommand = askNextCommand(MAX_COMMAND_NUMBER);
-        runCommand(numberPickedCommand);
 
-        System.exit(0);
-    }
-
-    private static void printCommands() {
         printCommandToMenu("Greet", "1");
         printCommandToMenu("Even", "2");
         printCommandToMenu("Calc", "3");
@@ -28,32 +21,16 @@ public class App {
         printCommandToMenu("Progression", "5");
         printCommandToMenu("Prime", "6");
         printCommandToMenu("Exit", "0");
-    }
 
-    private static String askNextCommand(int maxCommandNumber) {
         System.out.print("Your choice: ");
+        String userChoice = "";
         Scanner scan = new Scanner(System.in);
-        int commandNumber = -1;
-        while (scan.hasNext()) {
-            if (scan.hasNextInt()) {
-                commandNumber = scan.nextInt();
-            }
-            if (commandNumber >= 0 && commandNumber < maxCommandNumber + 1) {
-                break;
-            }
-            scan.next();
+        if (scan.hasNext()) {
+            userChoice = scan.next();
         }
 
-        return Integer.toString(commandNumber);
-    }
-
-    private static void printCommandToMenu(String command, String index) {
-        System.out.println(index + " - " + command);
-    }
-
-    private static void runCommand(String commandNumber) {
-        switch (commandNumber) {
-            case "1" -> Cli.greet();
+        switch (userChoice) {
+            case "1" -> Engine.greet();
             case "2" -> Even.run();
             case "3" -> Calc.run();
             case "4" -> GCD.run();
@@ -61,5 +38,9 @@ public class App {
             case "6" -> Prime.run();
             default -> { }
         }
+    }
+
+    private static void printCommandToMenu(String command, String index) {
+        System.out.println(index + " - " + command);
     }
 }

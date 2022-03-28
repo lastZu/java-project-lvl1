@@ -8,7 +8,7 @@ public final class Engine {
     private static int currentRound;
     private static String userName;
 
-    private static String greet() {
+    public static String greet() {
         System.out.println();
         System.out.println("Welcome to the Brain Games!");
         return askNameAndSayHelloTo();
