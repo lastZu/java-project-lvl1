@@ -4,9 +4,9 @@ public final class RoundData {
     private final String question;
     private final String answer;
 
-    public RoundData(String problem, String reply) {
-        this.question = problem;
-        this.answer = reply;
+    public RoundData(String questionParam, String answerParam) {
+        this.question = questionParam;
+        this.answer = answerParam;
     }
 
     public String getQuestion() {
