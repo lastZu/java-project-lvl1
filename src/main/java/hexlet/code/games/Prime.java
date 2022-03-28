@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import hexlet.code.Data;
+import hexlet.code.RoundData;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
@@ -9,28 +9,31 @@ public final class Prime {
 
     public static void run() {
         String description = getDescription();
+        RoundData[] roundData = getNextRound();
 
-        boolean continueGame = true;
-        while (continueGame) {
-            Data roundData = getNextRound();
-            continueGame = Engine.run(roundData, description);
-        }
+        Engine.run(roundData, description);
     }
 
     private static String getDescription() {
         return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     }
 
-    private static Data getNextRound() {
-        int randomNumber = Utils.getRandomInteger(1, MAX_QUESTION_VALUE);
+    private static RoundData[] getNextRound() {
+        RoundData[] roundsData = new RoundData[Engine.ROUND_AMOUNT];
 
-        String question = Integer.toString(randomNumber);
-        String answer = getAnswer(randomNumber);
+        for (int i = 0; i < Engine.ROUND_AMOUNT; i++) {
+            int randomNumber = Utils.getRandomInteger(1, MAX_QUESTION_VALUE);
 
-        return new Data(question, answer);
+            String question = Integer.toString(randomNumber);
+            String answer = getAnswer(randomNumber);
+
+            roundsData[i] = new RoundData(question, answer);
+        }
+
+        return roundsData;
     }
 
-    public static String getAnswer(int randomNumber) {
+    private static String getAnswer(int randomNumber) {
         if (randomNumber == 1) {
             return "no";
         }

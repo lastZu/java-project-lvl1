@@ -4,9 +4,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public final class Engine {
-    private static final int ROUND_AMOUNT = 3;
-    private static int currentRound;
-    private static String userName;
+    public static final int ROUND_AMOUNT = 3;
 
     public static String greet() {
         System.out.println();
@@ -23,73 +21,35 @@ public final class Engine {
         return name;
     }
 
-    public static boolean run(Data roundData, String description) {
-        if (currentRound == ROUND_AMOUNT) {
-            sayResult();
-            setCurrentRound(0);
-            setUserName("");
-            return false;
-        }
-        if (currentRound == 0) {
-            setUserName(greet());
-            System.out.println(description);
-        }
-        setCurrentRound(currentRound + 1);
+    public static void run(RoundData[] roundData, String description) {
+        String userName = greet();
+        System.out.println(description);
 
-        return runRound(roundData);
-    }
-
-    private static boolean runRound(Data roundData) {
-        String question = roundData.getQuestion();
-        String correctAnswer = roundData.getAnswer();
-
-        askCurrentQuestion(question);
-
-        String userAnswer = getUserAnswer();
-
-        boolean isCorrectAnswer = userAnswer.toLowerCase(Locale.ROOT).equals(correctAnswer);
-
-        if (!isCorrectAnswer) {
-            sayWrong(userAnswer, correctAnswer);
-            return false;
-        }
-        sayCorrect();
-        return true;
-    }
-
-    private static String getUserAnswer() {
-        System.out.print("Your answer: ");
+        boolean isCorrectAnswer = false;
         Scanner scan = new Scanner(System.in);
+        for (int i = 0; i < ROUND_AMOUNT; i++) {
+            String question = roundData[i].getQuestion();
+            String correctAnswer = roundData[i].getAnswer();
 
-        return scan.nextLine().trim();
-    }
+            System.out.println("Question: " + question);
 
-    private static void sayCorrect() {
-        System.out.println("Correct!");
-    }
+            System.out.print("Your answer: ");
+            String userAnswer = "";
+            if (scan.hasNextLine()) {
+                userAnswer = scan.nextLine().trim();
+            }
 
-    private static void sayWrong(String userAnswer, String correctAnswer) {
-        System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
-        System.out.println("Let's try again, " + getUserName() + "!");
-    }
+            isCorrectAnswer = userAnswer.toLowerCase(Locale.ROOT).equals(correctAnswer);
+            if (!isCorrectAnswer) {
+                System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", userAnswer, correctAnswer);
+                System.out.println("Let's try again, " + userName + "!");
+                break;
+            }
 
-    private static String getUserName() {
-        return userName;
-    }
-
-    private static void sayResult() {
-        System.out.println("Congratulations, " + userName + "!");
-    }
-
-    public static void askCurrentQuestion(String questionsText) {
-        System.out.println("Question: " + questionsText);
-    }
-
-    private static void setCurrentRound(int roundNumber) {
-        Engine.currentRound = roundNumber;
-    }
-
-    private static void setUserName(String name) {
-        Engine.userName = name;
+            System.out.println("Correct!");
+        }
+        if (isCorrectAnswer) {
+            System.out.println("Congratulations, " + userName + "!");
+        }
     }
 }

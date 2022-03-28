@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import hexlet.code.Data;
+import hexlet.code.RoundData;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
@@ -10,27 +10,30 @@ public final class Calc {
 
     public static void run() {
         String description = getDescription();
+        RoundData[] roundData = getNextRound();
 
-        boolean continueGame = true;
-        while (continueGame) {
-            Data roundData = getNextRound();
-            continueGame = Engine.run(roundData, description);
-        }
+        Engine.run(roundData, description);
     }
 
     private static String getDescription() {
         return "What is the result of the expression?";
     }
 
-    private static Data getNextRound() {
-        int firstRandomNumber = Utils.getRandomInteger(0, MAX_QUESTION_VALUE);
-        int secondRandomNumber = Utils.getRandomInteger(0, MAX_QUESTION_VALUE);
-        int operationNumber = Utils.getRandomInteger(0, OPERATION_AMOUNT);
+    private static RoundData[] getNextRound() {
+        RoundData[] roundsData = new RoundData[Engine.ROUND_AMOUNT];
 
-        return generateNextRound(firstRandomNumber, secondRandomNumber, operationNumber);
+        for (int i = 0; i < Engine.ROUND_AMOUNT; i++) {
+            int firstRandomNumber = Utils.getRandomInteger(0, MAX_QUESTION_VALUE);
+            int secondRandomNumber = Utils.getRandomInteger(0, MAX_QUESTION_VALUE);
+            int operationNumber = Utils.getRandomInteger(0, OPERATION_AMOUNT);
+
+            roundsData[i] = generateNextRound(firstRandomNumber, secondRandomNumber, operationNumber);
+        }
+
+        return roundsData;
     }
 
-    private static Data generateNextRound(int x, int y, int operationNumber) {
+    private static RoundData generateNextRound(int x, int y, int operationNumber) {
         String question = "0 + 0";
         int answer = 0;
 
@@ -45,6 +48,6 @@ public final class Calc {
             question = x + " * " + y;
         }
 
-        return new Data(question, Integer.toString(answer));
+        return new RoundData(question, Integer.toString(answer));
     }
 }

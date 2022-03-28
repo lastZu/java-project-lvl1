@@ -1,12 +1,12 @@
 package hexlet.code;
 
-public final class Data {
+public final class RoundData {
     private final String question;
     private final String answer;
 
-    public Data(String currentQuestion, String currentAnswer) {
-        this.question = currentQuestion;
-        this.answer = currentAnswer;
+    public RoundData(String problem, String reply) {
+        this.question = problem;
+        this.answer = reply;
     }
 
     public String getQuestion() {
