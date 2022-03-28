@@ -4,8 +4,6 @@ import hexlet.code.RoundData;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-import java.util.StringJoiner;
-
 public final class Progression {
     private static final int ROW_LENGTH = 8;
     private static final int MAX_STEP_VALUE = 20;
@@ -28,18 +26,19 @@ public final class Progression {
         for (int i = 0; i < Engine.ROUND_AMOUNT; i++) {
             int step = Utils.getRandomInteger(0, MAX_STEP_VALUE);
             int startValue = Utils.getRandomInteger(0, MAX_STEP_VALUE);
-            int hiddenNumberIndex = Utils.getRandomInteger(1, ROW_LENGTH);
+            int hiddenNumberIndex = Utils.getRandomInteger(0, ROW_LENGTH);
 
-            int answer = 0;
-            StringJoiner question = new StringJoiner(SEPARATOR);
-            for (int j = 1; j <= ROW_LENGTH; j++) {
-                int tempNumber = startValue + j * step;
-                String addingValue = j == hiddenNumberIndex ? ".." : Integer.toString(tempNumber);
-                answer = j == hiddenNumberIndex ? tempNumber : answer;
-
-                question.add(addingValue);
+            String[] question = new String[ROW_LENGTH];
+            for (int j = 0; j < ROW_LENGTH; j++) {
+                int tempNumber = startValue + (j + 1) * step;
+                question[j] = Integer.toString(tempNumber);
             }
-            roundsData[i] = new RoundData(question.toString(), Integer.toString(answer));
+
+            String answer = question[hiddenNumberIndex];
+            question[hiddenNumberIndex] = "..";
+
+            String textQuestion = String.join(SEPARATOR, question);
+            roundsData[i] = new RoundData(textQuestion, answer);
         }
 
         return roundsData;
