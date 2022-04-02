@@ -14,13 +14,13 @@ public class App {
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
 
-        printCommandToMenu("Greet", "1");
-        printCommandToMenu("Even", "2");
-        printCommandToMenu("Calc", "3");
-        printCommandToMenu("GCD", "4");
-        printCommandToMenu("Progression", "5");
-        printCommandToMenu("Prime", "6");
-        printCommandToMenu("Exit", "0");
+        System.out.println("1 - Greet");
+        System.out.println("2 - Even");
+        System.out.println("3 - Calc");
+        System.out.println("4 - GCD");
+        System.out.println("5 - Progression");
+        System.out.println("6 - Prime");
+        System.out.println("0 - Exit");
 
         System.out.print("Your choice: ");
         String userChoice = "";

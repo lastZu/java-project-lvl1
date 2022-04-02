@@ -6,26 +6,21 @@ import java.util.Scanner;
 public final class Engine {
     public static final int ROUND_AMOUNT = 3;
 
-    public static String greet() {
+    public static void greet() {
         System.out.println();
         System.out.println("Welcome to the Brain Games!");
-        return askNameAndSayHelloTo();
-    }
-
-    private static String askNameAndSayHelloTo() {
-        System.out.print("May I have your name? ");
-        Scanner scan = new Scanner(System.in);
-        var name = scan.nextLine().trim();
-        System.out.println("Hello, " + name + "!");
-
-        return name;
     }
 
     public static void run(RoundData[] roundData, String description) {
-        String userName = greet();
+        greet();
+
+        System.out.print("May I have your name? ");
+        Scanner scan = new Scanner(System.in);
+        String userName = scan.nextLine().trim();
+        System.out.println("Hello, " + userName + "!");
+
         System.out.println(description);
 
-        Scanner scan = new Scanner(System.in);
         boolean isCorrectAnswer = false;
         for (int i = 0; i < ROUND_AMOUNT; i++) {
             String question = roundData[i].getQuestion();
